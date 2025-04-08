@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.restaurant-logo {
+    width: 150px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.bill {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    margin: auto;
+}
+
+.order {
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 2px solid #007bff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 10px;
+}
