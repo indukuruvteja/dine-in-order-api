@@ -22,4 +22,5 @@ public class QRCodeController {
         byte[] image = qrCodeService.generateQRCode(data);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(image);
     }
+    //Commit
 }
