@@ -14,6 +14,7 @@ public class Bill {
     private String restaurantName;
     private int tableNo;
 
+    
     @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
 
