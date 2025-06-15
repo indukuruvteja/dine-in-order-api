@@ -10,6 +10,7 @@ public class BillDTO {
     private List<OrderDTO> orders;
     private double totalAmount;
 
+    
     public BillDTO() {
     }
 
