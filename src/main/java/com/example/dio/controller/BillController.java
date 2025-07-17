@@ -1,26 +1,49 @@
 package com.example.dio.controller;
 
-import com.example.dio.dto.BillDTO;
-import com.example.dio.service.interfaces.BillService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.dio.dto.response.BillResponse;
+import com.example.dio.service.BillService;
+import com.example.dio.util.ResponseBuilder;
+import com.example.dio.util.ResponseStructur;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/bills")
+@RequestMapping("${app.base-url}")
+@AllArgsConstructor
 public class BillController {
 
     private final BillService billService;
 
+<<<<<<< HEAD
     @Autowired
     
     public BillController(BillService billService) {
         this.billService = billService;
+=======
+    @PostMapping("/bills/tables/{tableId}")
+    public ResponseEntity<ResponseStructur<BillResponse>> createBill(@PathVariable long tableId){
+        BillResponse billResponse = billService.createBill(tableId);
+        return ResponseBuilder.created("Bill Generated !!",billResponse);
+>>>>>>> 363d7e2 (Initial project commit)
     }
 
-    @GetMapping("/generate/{tableId}")
-    public ResponseEntity<BillDTO> generateBill(@PathVariable Long tableId) {
-        BillDTO billDTO = billService.generateBill(tableId);
-        return ResponseEntity.ok(billDTO);
+    @GetMapping("/bills/{billId}")
+    public ResponseEntity<ResponseStructur<BillResponse>> findByBillId(@PathVariable long billId){
+        BillResponse billResponse = billService.findById(billId);
+        return ResponseBuilder.ok("Bill Found !!",billResponse);
     }
+
+    @GetMapping("/bills/pdf/{billId}")
+    public ResponseEntity<byte[]> findBillById(@PathVariable long billId) throws  Exception{
+
+        byte[] billPDF = billService.pdfGeneration(billId);
+        return  ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment;filename=Dine-in-bill.pdf")
+                .body(billPDF);
+    }
+
 }

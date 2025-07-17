@@ -1,3 +1,4 @@
+
 package com.example.dio;
 
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,6 @@ class DineInOrderApiApplicationTests {
 
     @Test
     void contextLoads() {
-        // If the application context loads successfully, this test will pass
     }
+
 }
